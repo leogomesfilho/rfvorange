@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Tabela do Google Planilhas</title>
+  <title>TESTE</title>
   <style>
     table {
       border-collapse: collapse;
@@ -16,52 +16,7 @@
   </style>
 </head>
 <body>
-  <table>
-    <thead>
-      <tr>
-        <th>Duplas</th>
-        <th>Coluna 2</th>
-        <th>Coluna 3</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Os dados da tabela serão preenchidos dinamicamente usando JavaScript -->
-    </tbody>
-  </table>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-  <script>
-    function loadTableData() {
-      var spreadsheetID = "18-Irw_--bmWnCpNHH6i5Gku48zPouzuWeGXy22WOWNM";
-      var url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
-
-      $.ajax({
-        url: url,
-        dataType: "json",
-        success: function (data) {
-          var entries = data.feed.entry;
-
-          entries.forEach(function (entry) {
-            var row = $("<tr>");
-
-            var cell1 = $("<td>").text(entry.gsx$coluna1.$t);
-            row.append(cell1);
-
-            var cell2 = $("<td>").text(entry.gsx$coluna2.$t);
-            row.append(cell2);
-
-            var cell3 = $("<td>").text(entry.gsx$coluna3.$t);
-            row.append(cell3);
-
-            $("tbody").append(row);
-          });
-        }
-      });
-    }
-
-    loadTableData();
-
-  </script>
+  <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT13KdPqH9S85SZzhjPe6s42Wl1bsY32Fgh0t-9PPXqRJ2yGjwIQT9CTA0xGRIqA9fGbRFprisgY6OY/pubhtml?widget=true&amp;headers=false"></iframe>
   
 </body>
 </html>
