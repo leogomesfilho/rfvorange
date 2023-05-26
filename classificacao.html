@@ -29,5 +29,42 @@
     </tbody>
   </table>
   
+  <script>
+    // Função para carregar os dados da planilha do Google em uma tabela HTML
+    function loadTableData() {
+      var spreadsheetID = "18-Irw_--bmWnCpNHH6i5Gku48zPouzuWeGXy22WOWNM";
+      var url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
+
+      fetch(url)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          var entries = data.feed.entry;
+
+          entries.forEach(function (entry) {
+            var row = document.createElement("tr");
+
+            var cell1 = document.createElement("td");
+            cell1.textContent = entry.gsx$coluna1.$t;
+            row.appendChild(cell1);
+
+            var cell2 = document.createElement("td");
+            cell2.textContent = entry.gsx$coluna2.$t;
+            row.appendChild(cell2);
+
+            var cell3 = document.createElement("td");
+            cell3.textContent = entry.gsx$coluna3.$t;
+            row.appendChild(cell3);
+
+            document.querySelector("tbody").appendChild(row);
+          });
+        });
+    }
+
+    // Chama a função para carregar os dados da tabela
+    loadTableData();
+  </script>
+  
 </body>
 </html>
